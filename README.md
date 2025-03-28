@@ -13,7 +13,7 @@ Modules: To install the necessary Python modules for the examples, you should re
 
 Operating System: Raspberry Pi OS
 
-Camera Connection: Camera Connection: The Pi Camera connects to the standard Raspberry Pi connector.
+Camera Connection: The Pi Camera connects to the standard Raspberry Pi connector.
 
 Alpr-Module File: Contains examples created with the ALPR module during the development of the license plate recognition project.
 
