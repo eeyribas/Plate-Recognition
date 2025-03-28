@@ -22,7 +22,7 @@ morphImg=cv2.morphologyEx(equalHistogram, cv2.MORPH_OPEN, kernel, iterations=15)
 cv2.namedWindow("Morphological opening", cv2.WINDOW_NORMAL)
 cv2.imshow("Morphological opening", morphImg)
 
-subMorpImg=cv2.subtract(equalHistogram,morphImg)
+subMorpImg=cv2.subtract(equalHistogram, morphImg)
 cv2.namedWindow("Subtraction image", cv2.WINDOW_NORMAL)
 cv2.imshow("Subtraction image", subMorpImg)
 
@@ -41,13 +41,13 @@ cv2.namedWindow("Dilation", cv2.WINDOW_NORMAL)
 cv2.imshow("Dilation", dilatedImg)
 
 new, contours, hierarchy=cv2.findContours(dilatedImg, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-contours=sorted(contours, key = cv2.contourArea, reverse = True)[:10]
+contours=sorted(contours, key=cv2.contourArea, reverse=True)[:10]
 screenCnt=None
 
 for c in contours:
     peri=cv2.arcLength(c, True)
-    approx=cv2.approxPolyDP(c, 0.06 * peri, True)
-    if len(approx) == 4:
+    approx=cv2.approxPolyDP(c, 0.06*peri, True)
+    if len(approx)==4:
         screenCnt=approx
         break
 

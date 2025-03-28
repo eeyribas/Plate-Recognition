@@ -29,5 +29,4 @@ def function():
             if(length==8):
                 print(text)
 
-
 function()

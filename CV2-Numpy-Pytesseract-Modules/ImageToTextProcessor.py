@@ -11,7 +11,7 @@ noiseRemoval=cv2.bilateralFilter(grayImg, 9, 75, 75)
 equalHistogram=cv2.equalizeHist(noiseRemoval)
 
 kernel=cv2.getStructuringElement(cv2.MORPH_RECT, (5,5))
-morphImg=cv2.morphologyEx(equalHistogram,cv2.MORPH_OPEN,kernel,iterations=15)
+morphImg=cv2.morphologyEx(equalHistogram, cv2.MORPH_OPEN,kernel, iterations=15)
 subMorphImg=cv2.subtract(equalHistogram, morphImg)
 
 ret,threshImg=cv2.threshold(subMorphImg, 0, 255, cv2.THRESH_OTSU)
@@ -22,13 +22,13 @@ kernel=np.ones((3,3), np.uint8)
 dilatedImg=cv2.dilate(cannyImg, kernel, iterations=1)
 
 new, contours, hierarchy=cv2.findContours(dilatedImg, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-contours=sorted(contours, key = cv2.contourArea, reverse = True)[:10]
+contours=sorted(contours, key=cv2.contourArea, reverse=True)[:10]
 screenCnt=None
 
 for c in contours:
     peri=cv2.arcLength(c, True)
-    approx=cv2.approxPolyDP(c, 0.06 * peri, True)
-    if len(approx) == 4:
+    approx=cv2.approxPolyDP(c, 0.06*peri, True)
+    if len(approx)==4:
         screenCnt=approx
         break
 final=cv2.drawContours(img, [screenCnt], -1, (0, 255, 0), 3)
